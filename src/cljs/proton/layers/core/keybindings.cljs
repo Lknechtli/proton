@@ -71,8 +71,14 @@
                        :action "application:open-your-snippets"}}
                :f {:title "advanced-open-file"
                    :action "advanced-open-file:toggle"}
-               := {:action "atom-beautify:beautify-editor" :title "format file"}}
+               := {:action "atom-beautify:beautify-editor" :title "format file"}
+               :s {:action "core:save" :title "save file"}}
           :s {:category "search"
+              :b {:action "find-and-replace:show"
+                  :target actions/get-active-editor
+                  :title "find and replace in buffer"}
+              :p {:action "project-find:show"
+                  :title "find and replace in project"}
               :e {:action "find-and-replace:select-all"
                   :target actions/get-active-editor
                   :title "expand selection"}
@@ -142,9 +148,7 @@
              :e {:action "project-manager:edit-projects"
                  :title "edit projects"}
              :r {:action "recent-files-fuzzy-finder:toggle-finder"
-                 :title "recent files"}
-             (keyword "/") {:action "project-find:show"
-                            :title "search in files"}}
+                 :title "recent files"}}
          :t {:category "toggles"
              :t {:title "tab-bar"
                  :fx (fn []
